@@ -1,0 +1,10 @@
+{
+  "firstname": "Rahul",
+  "lastname": "Dravid",
+  "password": "rah_passwd",
+  "email": "rahul@cricket.com",
+  "street": "123 OakStreet",
+    "city": "Malborogh",
+    "state": "Kansas",
+    "zip": "123456"
+}
