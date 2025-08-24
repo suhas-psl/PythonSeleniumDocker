@@ -1,6 +1,6 @@
 import pytest
 from selenium import webdriver
-from page_obj_proj.utils.browserUtils import BrowserUtils
+from page_obj_proj.utils.wait_utils import WaitUtils
 from page_obj_proj.resources.configurations import *
 
 
@@ -11,7 +11,7 @@ def pytest_addoption(parser):
 # THIS ALLOWS TO RUN TESTS PARALLELY IN ONLY ONE BROWSER AT A TIME.
 # NEED TO FIND HOW WE CAN RUN TESTS PARALLELY ON MULTIPLE BROWSERS
 @pytest.fixture()
-def browserInstance(request):
+def driver_instance(request):
     browser = request.config.getoption("--browser")
     if browser == "chrome":
         options = webdriver.ChromeOptions()
@@ -25,7 +25,7 @@ def browserInstance(request):
     driver.quit()
 
 @pytest.fixture(scope="session")
-def waits(browserInstance):
+def waits(driver_instance):
     """Initialize WaitUtils for the test session."""
-    return BrowserUtils(browserInstance, timeout=15)
+    return WaitUtils(driver_instance, timeout=15)
 
