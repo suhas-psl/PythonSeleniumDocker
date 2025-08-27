@@ -18,7 +18,7 @@ pipeline{
         post {
             always {
                 sh "docker compose -f docker-compose-selgrid.yaml down"
-                archiveArtifacts artifacts: 'outputs', followSymlinks: false
+                archiveArtifacts artifacts: 'outputs/**', followSymlinks: false
                 sh "docker system prune -af"
             }
         }
